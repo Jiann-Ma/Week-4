@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--為了不要做縮放-->
+    <title>第四週作業</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    
+    <main>
+        <div class="login">
+            <h1>歡迎光臨！</br>請輸入帳號與密碼</h1>
+            <form method="post" action="/signin">
+                <input type="text" name="account" placeholder="帳號名稱" required="required" />
+                <input type="password" name="password" placeholder="使用者密碼" required="required" />
+                <button type="submit" class="btn">立即登入</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        
+    </script>
+</body>
+
+</html>
