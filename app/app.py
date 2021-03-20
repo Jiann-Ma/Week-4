@@ -20,7 +20,10 @@ def home():
 
 @app.route("/member")
 def success():
-    return render_template("homeWork-4-html-sucess.html")
+    if session.get("user"): #抓得到名為user的session嗎?
+        return render_template("homeWork-4-html-sucess.html")
+    else:
+        return redirect("/")
 
 @app.route("/error")
 def failure():
@@ -30,7 +33,8 @@ def failure():
 def signin():
     if request.method == "POST":
         if request.form["account"] == "test" and request.form["password"] == "test":
-            session["user"] = request.form["account"]
+            session["user"] = request.form["account"]   #一定要先登入成功才能走到紀錄session的階段。
+            print(session["user"])
             return redirect("/member")
         else:
             return redirect("/error")
@@ -38,7 +42,7 @@ def signin():
 @app.route("/signout")
 def signout():
     # remove the username from the session if it's there
-    session.pop("account", None)
+    session.pop("user", None) #session的名字命名為user，不是account
     return redirect(url_for("home"))
 
 if __name__ == '__main__':
